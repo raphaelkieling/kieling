@@ -1,0 +1,3 @@
+# Egsys
+
+<Posts page="posts" />
