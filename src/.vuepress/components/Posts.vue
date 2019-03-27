@@ -16,7 +16,7 @@ export default {
   computed: {
     posts() {
       return this.$site.pages
-        .filter(page => page.frontmatter && page.frontmatter.title)
+        .filter(page => !page.frontmatter.private)
         .filter(page => page.path.startsWith("/posts/"));
     }
   }

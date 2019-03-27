@@ -4,6 +4,7 @@ description: Iniciando com docker
 date: 26/03/2019
 autor: Raphael Kieling Tondin
 nc: 21
+private: true
 ---
 
 # Iniciando com Docker e Node
