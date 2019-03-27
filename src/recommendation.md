@@ -1,6 +1,8 @@
 # Recomendações
 
-Este é o lugar onde eu coloco links importantes sobre coisas que eu estudo/pesquiso. Vou tentar manter sempre atualizado.
+Este é o lugar onde eu coloco links importantes sobre coisas que eu estudo/pesquiso. Vou tentar manter sempre atualizado. 
+
+Lembrando que nos posts eu sempre coloco as referências (afinal não nasci sabendo), então não estão aqui pra evitar trabalho dobrado.
 
 ## Artigos
 
