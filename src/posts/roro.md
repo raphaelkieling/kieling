@@ -9,16 +9,28 @@ nc: 1379
 
 <description-post/>
 
-Como patterns é algo que considero muito importante, provavelmente irei falar sobre muitos deles.
+![beer](https://philna.sh/assets/posts/destructured_beers-e79981058aae8ee2744370c5dc0951352039658395b46c74aaa2ba9cfe6aadd7.jpg)
 
-Logo que comecei a trabalhar na empresa que estou hoje utilizando PHP, eu via um tanto de funções assim:
+Logo que comecei a trabalhar na empresa (em 2018) que estou hoje utilizando PHP, eu via um tanto de funções assim:
 
 ```php
 // Anything file.php
 $this->save(false);
+$this->getAll(false);
+Person->getName(true, false);
 ```
 
-Agora vai a pergunta de um milhão de dólares. Que porra é esse `false` que tá sendo passado por parâmetro? Vamos melhorar isto logo em seguida.
+Agora vai a pergunta de um milhão de dólares. Que porra é esse `false` e `true` que tá sendo passado por parâmetro, o que elas fazem? Vamos melhorar isto logo em seguida.
+
+## Sumário
+
+- [O que é?](#o-que-e)
+- [Parâmetros Nomeados](#parametros-nomeados)
+- [Parâmetros Defaults](#parametros-defaults)
+- [Valores de retorno mais ricos](#valores-mais-ricos)
+- [Finalizando](#finalizando)
+
+## O que é?
 
 RORO ou `Receive an object, return an object` sendo traduzido para `Receba um objeto, retorne um objeto`. É um pattern que se utiliza de algo MUITO legal no javascript, o `destructuring`. Este artigo foi baseado em um artigo em inglês do Bill Sourour que achei muito foda e deixei ali nas referências caso queira dar uma olhada.
 
@@ -103,10 +115,10 @@ Auto explicativo:
 O pattern é muito útil, acho meio óbvio mas vou reforçar... ele é um pattern pra te ajudar a resolver problemas, não é preciso fazer isto em TODO lugar a TODO momento em TODO caso. Exemplo:
 
 ```js
-    let isNumber = () => ...
+    let isNumber = ({ value }) => ...
 ```
 
-Precisa mesmo passar um `{ value: 2 }`, acho que não.
+Precisa mesmo passar um `{ value: 2 }`?, acho que não.
 
 Até a próxima
 
