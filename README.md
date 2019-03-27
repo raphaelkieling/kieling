@@ -3,7 +3,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/6244d5e8-4935-4aad-aaf8-e40a07d2906d/deploy-status)](https://app.netlify.com/sites/kieling/deploys)
 
 <p align="center">
-    <a href="">Ainda não tem um link, irei colocar no ar em breve</a>
+    <a href="https://kieling.netlify.com/">Link para o site</a>
 </p>
 
 O intuito deste repositório é guardar o um blog sobre desenvolvimento, com estudos/pesquisas sobre coisas que eu gosto mas ao mesmo tempo passando conhecimento pra frente.
