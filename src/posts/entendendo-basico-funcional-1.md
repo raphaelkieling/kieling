@@ -1,11 +1,11 @@
 ---
-title: Entendendo o básico de programação funcional com Javascript
+title: Entendendo o básico de programação funcional com Javascript - Parte 1
 date: 26/03/2019
 autor: Raphael Kieling Tondin
 nc: 2307
 ---
 
-# Entendendo o básico de programação funcional com Javascript
+# Entendendo o básico de programação funcional com Javascript - Parte 1
 
 <description-post/>
 
@@ -21,12 +21,16 @@ Explicação mais simples possível sobre o que é programação funcional, e co
 - [Quem usa?](#porque-eu-estudaria-isto)
 - [O que é Programação Funcional?](#o-que-e-programacao-funcional)
 - [Conceitos chaves](#conceitos-chaves)
+    - [Funções de Primeira Classe](#funcoes-de-primeira-classe)
     - [Função Matemática ou Função Pura](#funcao-matematica-ou-funcao-pura)
     - [Recursividade](#recursividade)
     - [Ditar O QUE ser feito e não COMO](#ditar-o-que-ser-feito-e-nao-como)
     - [Efeitos Colaterais](#efeitos-colaterais)
     - [Imutabilidade](#imutabilidade)
+- [Exemplo Final](#exemplo-final)
+- [Finalizando](#finalizando)
 - [Referências](#referencias)
+
 
 ## Porque eu estudaria isto?
 
@@ -99,8 +103,25 @@ Vai dizer. Fácil né.
 
 ## Conceitos chaves
 
+### Funções de primeira classe
+
+O objetivo é evitar o `state` e abstrair para ser o mais reutilizavel possível, aceitando até mesmo outras funções como argumento. De modo geral as funções `.map()` e `.filter()` fazem exatamente isto, aqui vai um exemplo do livro **Eloquent Javascript**:
+
+```js
+function greaterThan(n) {
+    return function(m) {
+        return m > n;
+    };
+}
+
+var greaterThan10 = greaterThan(10);
+```
+
+A função `greaterThan` devolve uma função, então quer dizer que ela pode ser reutilizada, utilizando [clojure](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Closures) que é quando utilizamos aquela variável `n` dentro da segunda função `function(m){...}`
+
+
 ### Função Matemática ou Função Pura
-Na matemática a função é relação entre as entradas e as saídas em que cada combinação de entrada seja exatamente a mesma saída. 
+Na matemática a função é relação entre as entradas e as saídas em que cada combinação de entrada seja exatamente a mesma saída. Na programação é a mesma coisa mas além disso **NÃO** alterar nada que esteja fora da função evitando assim efeitos colaterais.
 
 ```js
     function pegaMaiorNumero(a, b){
@@ -229,7 +250,72 @@ O conceito supremo. A função não deve modificar o dado original! Sempre retor
 
 Percebeu que o `alteraNomePessoaCerto` não alterou o nome? Exatamente. Utilizamos um cara chamado `Object.assing` onde criamos uma nova referência em memória evitando assim trabalhar no objeto original.
 
-Acho que por enquanto já foi mais do que necessário pra entender os conceito básicos. Caso tu queira algumas bibliotecas para deixar o Javascript mais legal ainda de trabalhar com programação funcional de uma olhada em:
+## Exemplo Final
+
+O objetivo é ir na API de cep, perguntar por um cep válido, tratar o retorno e dar um `console.log` do resultado.
+
+```js
+/**
+ * Esta função cria um sistema de composição de função onde ao passar várias funções
+ * ela executa uma em sequência da outra passando o resultado da função anterior 
+ * como parâmetro para próxima.
+ * */
+function compose(...fn){
+  return (objectToJob) => fn.reduce((ant, now)=> now(ant), objectToJob)
+}
+
+/**
+ * Retorna uma Promise com o resultado da requisição em json
+ * */
+function getCepResponseDataInJSON(cepNumber){
+    return fetch(`https://viacep.com.br/ws/${cepNumber}/json/`)
+        .then(response => response.json());
+}
+
+/**
+ * Retorna [uf] localidade - cep
+ * ao passar um cep válido
+ * */
+function getCepInformationString(cepNumber){
+    let getLocateAndUf = ({ localidade, uf, cep }) => ({ localidade, uf, cep }) ;
+    let concatNameWithCep = ({ localidade, uf, cep }) => `[${uf}] ${localidade} - ${cep}`;
+
+    return getCepResponseDataInJSON(cepNumber).then(response => {
+
+        /** 
+         * Executa getLocateAndUf pega o resultado e passa para concatNameWithCep
+         * getLocateAndUf -> concatNameWithCep
+         * 
+         * O response ali no final serve para alimentar a primeira função no caso
+         * a getLocateAndUf
+         * 
+         * Olhe como fica mais organizado perto de outras abordagens como
+         * ----
+         * let locateWithUf = getLocateAndUf(response);
+         * let concated = concatNameWithCep(locateWithUf);
+         * return concated;
+         * --- ou
+         * return concatNameWithCep(locateWithUf(response));
+         * */
+        return compose(getLocateAndUf, concatNameWithCep)(response);
+    });
+}
+
+getCepInformationString('95555000')
+    .then(console.log);
+    // Output: [RS] Capão da Canoa - 95555-000
+```
+
+## Finalizando
+
+Deixamos de passar em alguns conceitos bem legais, mas que considero mais avançados comos:
+- Memoize
+- Curry
+- Compose
+- Pipe
+- Mônadas
+
+Mas acho que por enquanto já foi mais do que necessário pra entender os conceito básicos. Caso tu queira algumas bibliotecas para deixar o Javascript mais legal ainda de trabalhar com programação funcional de uma olhada em:
 
 - [Pareto JS](https://github.com/concretesolutions/pareto.js/)
 - [Ramda JS](https://ramdajs.com/)
@@ -240,3 +326,4 @@ Acho que por enquanto já foi mais do que necessário pra entender os conceito b
 - [Programação funcional para iniciantes](https://medium.com/trainingcenter/programa%C3%A7%C3%A3o-funcional-para-iniciantes-9e2beddb5b43)
 - [Functional Programming in JavaScript](https://codeburst.io/functional-programming-in-javascript-e57e7e28c0e5)
 - [FUNCTIONAL VS PROCEDURAL JAVASCRIPT](https://www.scalablepath.com/blog/javascript-functional-vs-procedural/)
+- [Funções Puras - Programação Funcional: Parte 1](https://www.youtube.com/watch?v=BMUiFMZr7vk)

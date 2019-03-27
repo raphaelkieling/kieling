@@ -24,15 +24,22 @@ Agora vai a pergunta de um milhão de dólares. Que porra é esse `false` e `tru
 
 ## Sumário
 
+- [Pré-requisitos](#pre-requisitos)
 - [O que é?](#o-que-e)
 - [Parâmetros Nomeados](#parametros-nomeados)
 - [Parâmetros Defaults](#parametros-defaults)
 - [Valores de retorno mais ricos](#valores-mais-ricos)
 - [Finalizando](#finalizando)
 
+## Pré-requisitos
+
+Entender o que é o destructuring. Não vou reinventar.
+
+<iframe style="margin-top: 20px" width="560" height="315" src="https://www.youtube.com/embed/PB_d3uBkQPs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## O que é?
 
-RORO ou `Receive an object, return an object` sendo traduzido para `Receba um objeto, retorne um objeto`. É um pattern que se utiliza de algo MUITO legal no javascript, o `destructuring`. Este artigo foi baseado em um artigo em inglês do Bill Sourour que achei muito foda e deixei ali nas referências caso queira dar uma olhada.
+RORO ou `Receive an object, return an object` sendo traduzido para `Receba um objeto, retorne um objeto`. É um pattern que se utiliza de algo MUITO legal no javascript, o `destructuring`. Este artigo foi baseado em um [artigo](https://medium.freecodecamp.org/elegant-patterns-in-modern-javascript-roro-be01e7669cbd) em inglês do `Bill Sourour` que achei muito foda e deixei ali nas referências caso queira dar uma olhada.
 
 ```js
     // No
