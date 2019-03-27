@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>{{date}} • {{name}} - Time to done: ~{{doneIn}} min</p>
+    <p>{{date}} • {{name}}</p>
   </div>
 </template>
 

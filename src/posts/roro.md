@@ -2,7 +2,6 @@
 title: RORO Pattern
 date: 26/03/2019
 autor: Raphael Kieling Tondin
-nc: 1379
 ---
 
 # RORO Pattern
