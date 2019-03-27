@@ -13,7 +13,7 @@ nc: 2307
     <img src="https://deployeveryday.com/img/lambda_symbol.png" width="150" height="150">
 </p>
 
-Explicação mais simples possível sobre o que é programação funcional, e como utilizar pra melhorar um código existente sem ter que mudar de linguagem.
+Sou apaixonado por programação funcional, é um sintaxe linda e organizada que deixa qualquer programador de outro paradigma curioso. Hoje vamos ver alguns conceitos sobre FP (para os intimos), está é a parte 1/2 sobre programação funcional.
 
 ## Sumário
 
