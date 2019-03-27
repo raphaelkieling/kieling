@@ -1,6 +1,5 @@
 ---
 title: Entendendo o básico de programação funcional com Javascript
-description: Entendendo o básico de programação funcional com Javascript
 date: 26/03/2019
 autor: Raphael Kieling Tondin
 nc: 2307

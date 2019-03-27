@@ -1,3 +1,3 @@
-# Kieling
+# Artigos
 
 <Posts page="posts" />

@@ -17,7 +17,8 @@ export default {
     posts() {
       return this.$site.pages
         .filter(page => !page.frontmatter.private)
-        .filter(page => page.path.startsWith("/posts/"));
+        .filter(page => page.path.startsWith("/posts/"))
+        .reverse();
     }
   }
 };
