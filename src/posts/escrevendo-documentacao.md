@@ -1,6 +1,6 @@
 ---
 title: Escrevendo uma boa documentação
-date: 26/03/2019
+date: 28/03/2019
 autor: Raphael Kieling Tondin
 ---
 
